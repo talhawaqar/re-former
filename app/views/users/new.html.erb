@@ -1,14 +1,19 @@
 
-<%= form_tag("/users") do %>
-
-  <%= label_tag(:username, "Username") %>
-  <%= text_field(:user, :username) %>
-  <br/>
+<%# <%= form_tag("/users") do %> 
+  <%# <%= label_tag(:username, "Username") %>
+  <%# <%= text_field(:user, :username) %>
+  <%# <br/>
   <%= label_tag(:email, "Email") %>
-  <%= email_field(:user, :email) %>
-  <br/>
-  <%= label_tag(:password, "Password") %>
-  <%= password_field(:user, :password) %>
-  <br/>
-  <%= submit_tag("Submit") %>
+  <%# <%= email_field(:user, :email) %>
+  <%# <br/> %> 
+  <%# <%= label_tag(:password, "Password") %>
+  <%# <%= password_field(:user, :password) %>  
+  <%# <br/> %>
+  <%# <%= submit_tag("Submit") %> 
+<%# <% end %> 
+<%= form_for @user do |u| %>
+  User name: <%= u.text_field :username %><br />
+  Email : <%= u.email_field :email %><br />
+  Password : <%= u.password_field :password %><br />
+  <%= u.submit %>
 <% end %>
