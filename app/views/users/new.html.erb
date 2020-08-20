@@ -1,0 +1,49 @@
+
+<%# <form action="/users" method="post" accept-charset="UTF-8"> %>
+<%# <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+  <%# <label for="username">Username:</label>
+  <input type="text" id="username" name="user[username]"><br><br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="user[email]"><br><br>
+  <label for="password">Pasword:</label>
+  <input type="password" id="password" name="user[password]"><br><br>
+  <input type="submit" value="Submit"> %>
+<%# </form>> %>
+
+<%#= form_tag(users_path, method: "post") do %> 
+  <%#= label_tag(:username, "Username:") %>
+  <%#= text_field(:user, :username) %> 
+  <%#= label_tag(:email, "Email:") %>
+  <%#= email_field(:user, :email) %>
+  <%#= label_tag(:password, "Password:") %>
+  <%#= password_field(:user, :password) %>
+  <%#= submit_tag("Submit") %> 
+<%# end %>
+
+ 
+
+
+<% def msg(status) return "#{status}" end %>
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+  <div class="panel-body">
+    <h2>Create a user</h2>
+    <%= form_for @user do |f| %>
+      <%= form_group_for f, :username, label: false  do %>
+        <div class="input-group">
+          User Name: <%= f.text_field :username, class: 'form-control', placeholder: 'UserName' %>
+        </div>
+      <% end %>
+      <%= form_group_for f, :email, label: false  do %>
+        <div class="input-group">
+          Email    : <%= f.text_field :email, class: 'form-control', placeholder: 'example@email.com' %>
+        </div>
+      <% end %>                  
+      <%= form_group_for f, :password, label: false  do %>
+        <div class="input-group">
+          Password:  <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        </div>
+      <% end %>
+      <%= f.submit("Create User", class:"btn btn-primary", data: {:confirm => msg('Do you want to create user?'), :disable_with => 'Creating'}) %>
+    <% end %>
+  </div>    
+</div>
